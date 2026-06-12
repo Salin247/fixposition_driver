@@ -11,6 +11,13 @@
     <node name="fixposition_driver_ros1" pkg="fixposition_driver_ros1" type="fixposition_driver_ros1" output="screen" respawn="true" respawn_delay="5">
         <rosparam command="load" file="$(find fixposition_driver_ros1)/launch/tcp.yaml" />
 
+        <!-- Per-box VRTK2 IP override. The committed tcp.yaml default is v3
+             (192.168.7.30). On any other box, export FIXPOSITION_IP to its
+             VRTK2 address (e.g. v5: `export FIXPOSITION_IP=10.0.7.2`) instead
+             of editing the tracked yaml. This <param> is loaded AFTER the
+             rosparam yaml, so it wins; params.cpp reads fp_output/ip from the
+             param server. If FIXPOSITION_IP is unset, the yaml default is used. -->
+        <param name="fp_output/ip" value="$(optenv FIXPOSITION_IP 192.168.7.30)" />
 
     </node>
 </launch>
