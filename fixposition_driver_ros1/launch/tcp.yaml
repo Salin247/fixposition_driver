@@ -7,7 +7,7 @@ fp_output:
              ]
     type: tcp
     port: "21000"
-    ip: "10.0.7.2" # change to VRTK2's IP address in the network
+    ip: "192.168.7.30" # change to VRTK2's IP address in the network
     rate: 60
     reconnect_delay: 5.0 # wait time in [s] until retry connection
     cov_warning: false
