@@ -1,5 +1,8 @@
 topic_type: "Twist" # Twist, TwistWithCov or Odometry
-input_topic: "/vesc_speed" # Original topic name
+# Merged body velocity from all four wheel speeds + steering headings (least-squares,
+# published by localization/wheel_odom.py). Replaces the dead /vesc_speed topic.
+# Converter emits a single RC (rear-center) WheelSensor, matching the FP config.
+input_topic: "/localization/wheel_odometry" # Original topic name
 fixposition_speed_topic: "/fixposition/speed" # Fixposition topic name, to be subscribed by the fixposition_driver
 multiplicative_factor: 1000 # To convert from the original unit of measurement to mm/s
 use_x: true # Transmit the x axis of the input velocity
